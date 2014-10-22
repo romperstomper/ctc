@@ -16,7 +16,7 @@ class Node(object):
     self.value = value
 
 class Linkedlist(object):
-  def __init__(self, value):
+  def __init__(self):
     self.head = None
     self.tail = None
 
@@ -28,12 +28,27 @@ class Linkedlist(object):
     self.tail = Node
 
 def iscircular(a):
-  seen = defaultdict()
-  for i in a:
-    if i not in a:
-      seen.setdefault(i)
+  seen = defaultdict(int)
+  cur = a.head
+  while cur:
+    if cur not in seen:
+      seen.setdefault(cur)
     else:
-      return i
+      return cur.value
+    cur = cur.next
+
+# Sanity Checks
+a = Node(1)
+b = Node(2)
+c = Node(3)
+d = Node(4)
+e = Node(5)
+linked = Linkedlist()
+l = [a,b,c,d,e, c]
+for i in l:
+  linked.Addnode(i)
+
+print iscircular(linked)
 
 
 
